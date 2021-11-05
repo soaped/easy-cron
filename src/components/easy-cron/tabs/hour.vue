@@ -6,16 +6,16 @@
     </div>
     <div class="item">
       <el-radio label="TYPE_RANGE" class="choice" :disabled="disabled">区间</el-radio>
-       从<el-input-number :disabled="type!=TYPE_RANGE || disabled" :max="maxValue" :min="minValue" :precision="0"
+       从<el-input :disabled="type!=TYPE_RANGE || disabled" :max="maxValue" :min="minValue" :precision="0"
         class="w60" v-model="valueRange.start" />时
-       至<el-input-number :disabled="type!=TYPE_RANGE || disabled" :max="maxValue" :min="minValue" :precision="0"
+       至<el-input :disabled="type!=TYPE_RANGE || disabled" :max="maxValue" :min="minValue" :precision="0"
         class="w60" v-model="valueRange.end" />时
     </div>
     <div class="item">
       <el-radio label="TYPE_LOOP" class="choice" :disabled="disabled">循环</el-radio>
-      从<el-input-number :disabled="type!=TYPE_LOOP || disabled" :max="maxValue" :min="minValue" :precision="0"
+      从<el-input :disabled="type!=TYPE_LOOP || disabled" :max="maxValue" :min="minValue" :precision="0"
        class="w60" v-model="valueLoop.start" />时开始，间隔
-      <el-input-number :disabled="type!=TYPE_LOOP || disabled" :max="maxValue" :min="minValue" :precision="0"
+      <el-input :disabled="type!=TYPE_LOOP || disabled" :max="maxValue" :min="minValue" :precision="0"
        class="w60" v-model="valueLoop.interval" />时
     </div>
     <div class="item">
@@ -94,5 +94,8 @@ export default {
 .list-check-item {
   padding: 1px 3px;
   width: 4em;
+}
+.el-radio-group {
+  font-size: 10px;
 }
 </style>

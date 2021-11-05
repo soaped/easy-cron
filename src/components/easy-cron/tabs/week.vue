@@ -19,7 +19,7 @@
       从<el-select v-model="valueLoop.start"  class="w80" :disabled="type!=TYPE_LOOP || disableChoice">
         <el-option v-for="(v, k) of WEEK_MAP" :value="v" :key="`week-pre-Lf13-${v}`">{{ k }}</el-option>
       </el-select>开始，间隔
-      <el-input-number :disabled="type!=TYPE_LOOP || disableChoice" :max="maxValue" :min="minValue" :precision="0"
+      <el-input :disabled="type!=TYPE_LOOP || disableChoice" :max="maxValue" :min="minValue" :precision="0"
        class="w60" v-model="valueLoop.interval" /> 天
     </div>
     <div class="item">
@@ -141,5 +141,8 @@ export default {
 .list-check-item {
   padding: 1px 3px;
   width: 4em;
+}
+.el-radio-group {
+  font-size: 10px;
 }
 </style>

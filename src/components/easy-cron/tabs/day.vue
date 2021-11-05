@@ -1,6 +1,6 @@
 <template>
   <div class="config-list">
-    <el-radio-Group v-model="type">
+    <el-radio-group v-model="type">
     <div class="item">
       <el-radio label="TYPE_NOT_SET" class="choice" :disabled="disableChoice">不设置</el-radio>
       <span class="tip-info">日和周只能设置其中之一</span>
@@ -10,21 +10,21 @@
     </div>
     <div class="item">
       <el-radio label="TYPE_RANGE" class="choice" :disabled="disableChoice">区间</el-radio>
-       从<el-input-number :disabled="type!=TYPE_RANGE || disableChoice" :max="maxValue" :min="minValue" :precision="0"
+       从<el-input :disabled="type!=TYPE_RANGE || disableChoice" :max="maxValue" :min="minValue" :precision="0"
         class="w60" v-model="valueRange.start" />日
-       至<el-input-number :disabled="type!=TYPE_RANGE || disableChoice" :max="maxValue" :min="minValue" :precision="0"
+       至<el-input :disabled="type!=TYPE_RANGE || disableChoice" :max="maxValue" :min="minValue" :precision="0"
         class="w60" v-model="valueRange.end" />日
     </div>
     <div class="item">
       <el-radio label="TYPE_LOOP" class="choice" :disabled="disableChoice">循环</el-radio>
-      从<el-input-number :disabled="type!=TYPE_LOOP || disableChoice" :max="maxValue" :min="minValue" :precision="0"
+      从<el-input :disabled="type!=TYPE_LOOP || disableChoice" :max="maxValue" :min="minValue" :precision="0"
        class="w60" v-model="valueLoop.start" />日开始，间隔
-      <el-input-number :disabled="type!=TYPE_LOOP || disableChoice" :max="maxValue" :min="minValue" :precision="0"
+      <el-input :disabled="type!=TYPE_LOOP || disableChoice" :max="maxValue" :min="minValue" :precision="0"
        class="w60" v-model="valueLoop.interval" />日
     </div>
     <div class="item">
       <el-radio label="TYPE_WORK" class="choice" :disabled="disableChoice">工作日</el-radio>
-      本月<el-input-number :disabled="type!=TYPE_WORK || disableChoice" :max="maxValue" :min="minValue" :precision="0"
+      本月<el-input :disabled="type!=TYPE_WORK || disableChoice" :max="maxValue" :min="minValue" :precision="0"
        class="w60" v-model="valueWork" />日，最近的工作日
     </div>
     <div class="item">
@@ -39,7 +39,7 @@
         </el-checkbox-group>
       </div>
     </div>
-    </el-radio-Group>
+    </el-radio-group>
   </div>
 </template>
 
@@ -131,5 +131,8 @@ export default {
 .list-check-item {
   padding: 1px 3px;
   width: 4em;
+}
+.el-radio-group {
+  font-size: 10px;
 }
 </style>

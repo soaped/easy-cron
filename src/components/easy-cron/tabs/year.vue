@@ -6,16 +6,16 @@
     </div>
     <div class="item">
       <el-radio label="TYPE_RANGE" class="choice" :disabled="disabled">区间</el-radio>
-       从<el-input-number :disabled="type!=TYPE_RANGE || disabled" :min="0" :precision="0"
+       从<el-input :disabled="type!=TYPE_RANGE || disabled" :min="0" :precision="0"
         class="w60" v-model="valueRange.start" />年
-       至<el-input-number :disabled="type!=TYPE_RANGE || disabled" :min="1" :precision="0"
+       至<el-input :disabled="type!=TYPE_RANGE || disabled" :min="1" :precision="0"
         class="w60" v-model="valueRange.end" />年
     </div>
     <div class="item">
       <el-radio label="TYPE_LOOP" class="choice" :disabled="disabled">循环</el-radio>
-      从<el-input-number :disabled="type!=TYPE_LOOP || disabled" :min="0" :precision="0"
+      从<el-input :disabled="type!=TYPE_LOOP || disabled" :min="0" :precision="0"
        class="w60" v-model="valueLoop.start" />年开始，间隔
-      <el-input-number :disabled="type!=TYPE_LOOP || disabled" :min="1" :precision="0"
+      <el-input :disabled="type!=TYPE_LOOP || disabled" :min="1" :precision="0"
        class="w60" v-model="valueLoop.interval" />年
     </div>
     </el-radio-group>
@@ -88,5 +88,8 @@ export default {
 .list-check-item {
   padding: 1px 3px;
   width: 4em;
+}
+.el-radio-group {
+  font-size: 10px;
 }
 </style>
