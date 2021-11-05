@@ -1,17 +1,24 @@
 <template>
   <div class="input-cron">
-    <Input :placeholder="placeholder" style="width: auto" v-model="editCronValue" :disabled="disabled">
+    <el-input :placeholder="placeholder" style="width: auto" v-model="editCronValue" :disabled="disabled">
       <a slot="append" @click="showConfigDlg" class="config-btn" :disabled="disabled">
-        <Icon type="ios-calendar-outline" style="margin-right: 5px;"></Icon>配置
+        <el-button type="text" @click="dialogVisible = true">配置cron</el-button>
       </a>
-    </Input>
-    <Modal v-model="show" title="配置Cron表达式" :closable="true" :width="`${width+50}`"
-      :footer-hide="true">
-        <div>
-          <easy-cron v-model="editCronValue" :style="`width: ${width}px`" :exeStartTime="exeStartTime"
-            :hideYear="hideYear" :remote="remote" :hideSecond="hideSecond"></easy-cron>
-        </div>
-    </Modal>
+    </el-input>
+    <el-dialog title="提示" :visible.sync="dialogVisible"  width="800px" :before-close="handleClose">
+      <span>
+        <easy-cron v-model="editCronValue" width="800px" :exeStartTime="exeStartTime"
+                   :hideYear="hideYear" :remote="remote" :hideSecond="hideSecond">
+        </easy-cron>
+      </span>
+      <span slot="footer" class="dialog-footer"/>
+    </el-dialog>
+<!--    <el-dialog v-model="show" title="配置Cron表达式" :closable="true" :width="`${width+50}`"-->
+<!--           :footer-hide="true">-->
+
+<!--        <easy-cron v-model="editCronValue" :style="`width: ${width}px`" :exeStartTime="exeStartTime"-->
+<!--                   :hideYear="hideYear" :remote="remote" :hideSecond="hideSecond"></easy-cron>-->
+<!--    </el-dialog>-->
   </div>
 </template>
 
@@ -61,17 +68,18 @@ export default {
   data () {
     return {
       editCronValue: this.cronValue,
-      show: false
+      show: true,
+      dialogVisible: false
     }
   },
   watch: {
-    cronValue (newVal, oldVal) {
+    cronValue (newVal) {
       if (newVal === this.editCronValue) {
         return
       }
       this.editCronValue = newVal
     },
-    editCronValue (newVal, oldVal) {
+    editCronValue (newVal) {
       this.$emit('change', newVal)
     }
   },
@@ -82,6 +90,13 @@ export default {
       }
     }
   },
+  // handleClose(done) {
+  //   this.$confirm('确认关闭？')
+  //       .then(_ => {
+  //         done();
+  //       })
+  //       .catch(_ => {});
+  // },
   components: {
     EasyCron
   }
@@ -90,7 +105,7 @@ export default {
 
 <style scoped>
 .input-cron, .input-ui {
-  // display: inline-block;
+  display: inline-block;
 }
 
 .input-cron .ivu-input-wrapper {

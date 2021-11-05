@@ -1,33 +1,34 @@
 <template>
   <div class="config-list">
-    <RadioGroup v-model="type">
+    <el-radio-group v-model="type">
     <div class="item">
-      <Radio label="TYPE_EVERY" class="choice" :disabled="disabled">每分</Radio>
+      <el-radio label="TYPE_EVERY" class="choice" :disabled="disabled">每分</el-radio>
     </div>
     <div class="item">
-      <Radio label="TYPE_RANGE" class="choice" :disabled="disabled">区间</Radio>
-       从<InputNumber :disabled="type!=TYPE_RANGE || disabled" :max="maxValue" :min="minValue" :precision="0"
-        class="w60" v-model="valueRange.start" />分
-       至<InputNumber :disabled="type!=TYPE_RANGE || disabled" :max="maxValue" :min="minValue" :precision="0"
-        class="w60" v-model="valueRange.end" />分
+      <el-radio label="TYPE_RANGE" class="choice" :disabled="disabled">区间</el-radio>
+       <p>从</p>从<el-input-number :disabled="type!=TYPE_RANGE || disabled" :max="maxValue" :min="minValue" :precision="0"
+        class="ivu-input-number" v-model="valueRange.start" />分
+       至<el-input-number :disabled="type!=TYPE_RANGE || disabled" :max="maxValue" :min="minValue" :precision="0"
+        class="ivu-input-number" v-model="valueRange.end" />分
     </div>
     <div class="item">
-      <Radio label="TYPE_LOOP" class="choice" :disabled="disabled">循环</Radio>
-      从<InputNumber :disabled="type!=TYPE_LOOP || disabled" :max="maxValue" :min="minValue" :precision="0"
-       class="w60" v-model="valueLoop.start" />分开始，间隔
-      <InputNumber :disabled="type!=TYPE_LOOP || disabled" :max="maxValue" :min="minValue" :precision="0"
-       class="w60" v-model="valueLoop.interval" />分
+      <el-radio label="TYPE_LOOP" class="choice" :disabled="disabled">循环</el-radio>
+      <div :disabled="disabled">从</div>
+      <el-input-number :disabled="type!=TYPE_LOOP || disabled" :max="maxValue" :min="minValue" :precision="0"
+                        class="ivu-input-number" v-model="valueLoop.start" />分开始，间隔
+      <el-input-number :disabled="type!=TYPE_LOOP || disabled" :max="maxValue" :min="minValue" :precision="0"
+       class="ivu-input-number" v-model="valueLoop.interval" >分</el-input-number>
     </div>
     <div class="item">
-      <Radio  label="TYPE_SPECIFY" class="choice" :disabled="disabled">指定</Radio>
+      <el-radio  label="TYPE_SPECIFY" class="choice" :disabled="disabled">指定</el-radio>
       <div class="list">
-        <CheckboxGroup v-model="valueList">
-          <Checkbox class="list-check-item" v-for="i in maxValue+1"
-            :label="i-1" :key="`key-${i-1}`" :disabled="type!=TYPE_SPECIFY || disabled"></Checkbox>
-        </CheckboxGroup>
+        <el-checkbox-group v-model="valueList">
+          <el-checkbox class="list-check-item" v-for="i in maxValue+1"
+            :label="`${i-1}`" :key="`key-${i-1}`" :disabled="type!=TYPE_SPECIFY || disabled"></el-checkbox>
+        </el-checkbox-group>
       </div>
     </div>
-    </RadioGroup>
+    </el-radio-group>
   </div>
 </template>
 
@@ -41,7 +42,7 @@ export default {
     return {}
   },
   watch: {
-    value_c (newVal, oldVal) {
+    value_c (newVal) {
       this.$emit('change', newVal)
     }
   },
@@ -83,8 +84,9 @@ export default {
 }
 
 .ivu-input-number {
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 2px;
+  /*width: 60px;*/
+  margin-right: 2px;
 }
 
 .list {

@@ -1,24 +1,24 @@
 <template>
   <div class="config-list">
-    <RadioGroup v-model="type">
+    <el-radio-group v-model="type">
     <div class="item">
-      <Radio label="TYPE_EVERY" class="choice" :disabled="disabled">每年</Radio>
+      <el-radio label="TYPE_EVERY" class="choice" :disabled="disabled">每年</el-radio>
     </div>
     <div class="item">
-      <Radio label="TYPE_RANGE" class="choice" :disabled="disabled">区间</Radio>
-       从<InputNumber :disabled="type!=TYPE_RANGE || disabled" :min="0" :precision="0"
+      <el-radio label="TYPE_RANGE" class="choice" :disabled="disabled">区间</el-radio>
+       从<el-input-number :disabled="type!=TYPE_RANGE || disabled" :min="0" :precision="0"
         class="w60" v-model="valueRange.start" />年
-       至<InputNumber :disabled="type!=TYPE_RANGE || disabled" :min="1" :precision="0"
+       至<el-input-number :disabled="type!=TYPE_RANGE || disabled" :min="1" :precision="0"
         class="w60" v-model="valueRange.end" />年
     </div>
     <div class="item">
-      <Radio label="TYPE_LOOP" class="choice" :disabled="disabled">循环</Radio>
-      从<InputNumber :disabled="type!=TYPE_LOOP || disabled" :min="0" :precision="0"
+      <el-radio label="TYPE_LOOP" class="choice" :disabled="disabled">循环</el-radio>
+      从<el-input-number :disabled="type!=TYPE_LOOP || disabled" :min="0" :precision="0"
        class="w60" v-model="valueLoop.start" />年开始，间隔
-      <InputNumber :disabled="type!=TYPE_LOOP || disabled" :min="1" :precision="0"
+      <el-input-number :disabled="type!=TYPE_LOOP || disabled" :min="1" :precision="0"
        class="w60" v-model="valueLoop.interval" />年
     </div>
-    </RadioGroup>
+    </el-radio-group>
   </div>
 </template>
 
@@ -32,7 +32,7 @@ export default {
     return {}
   },
   watch: {
-    value_c (newVal, oldVal) {
+    value_c (newVal) {
       // console.info('change:' + newVal)
       this.$emit('change', newVal)
     }

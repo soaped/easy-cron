@@ -1,16 +1,16 @@
 <template>
-  <Card class="easy-cron">
+  <el-card class="easy-cron">
     <div class="content">
       <div class="left">
-        <Tabs size="small" v-model="curtab">
-          <TabPane label="秒" name="second" v-if="!hideSecond"><second-ui v-model="second" :disabled="disabled"></second-ui></TabPane>
-          <TabPane label="分" name="minute"><minute-ui v-model="minute" :disabled="disabled"></minute-ui></TabPane>
-          <TabPane label="时" name="hour"><hour-ui v-model="hour" :disabled="disabled"></hour-ui></TabPane>
-          <TabPane label="日" name="day"><day-ui v-model="day" :week="week" :disabled="disabled"></day-ui></TabPane>
-          <TabPane label="月" name="month"><month-ui v-model="month" :disabled="disabled"></month-ui></TabPane>
-          <TabPane label="周" name="week"><week-ui v-model="week" :day="day" :disabled="disabled"></week-ui></TabPane>
-          <TabPane label="年" name="year" v-if="!hideYear && !hideSecond"><year-ui v-model="year" :disabled="disabled"></year-ui></TabPane>
-        </Tabs>
+        <el-tabs size="small" v-model="curtab">
+          <el-tab-pane label="秒" name="second" v-if="!hideSecond"><second-ui v-model="second" :disabled="disabled"></second-ui></el-tab-pane>
+          <el-tab-pane label="分" name="minute"><minute-ui v-model="minute" :disabled="disabled"></minute-ui></el-tab-pane>
+          <el-tab-pane label="时" name="hour"><hour-ui v-model="hour" :disabled="disabled"></hour-ui></el-tab-pane>
+          <el-tab-pane label="日" name="day"><day-ui v-model="day" :week="week" :disabled="disabled"></day-ui></el-tab-pane>
+          <el-tab-pane label="月" name="month"><month-ui v-model="month" :disabled="disabled"></month-ui></el-tab-pane>
+          <el-tab-pane label="周" name="week"><week-ui v-model="week" :day="day" :disabled="disabled"></week-ui></el-tab-pane>
+          <el-tab-pane label="年" name="year" v-if="!hideYear && !hideSecond"><year-ui v-model="year" :disabled="disabled"></year-ui></el-tab-pane>
+        </el-tabs>
       </div>
       <div class="right">
         <div class="field-list"><Table stripe :columns="columns" :data="tableData"
@@ -18,19 +18,19 @@
         <div class="exe-pre">
           <div class="exe-pre-panel">
             <label class="p-left">执行时间</label>
-            <DatePicker type="datetime" v-model="startTime" class="p-right"
-              placeholder="选择执行开始时间"></DatePicker>
+            <el-date-picker DatePicker type="datetime" v-model="startTime" class="p-right"
+              placeholder="选择执行开始时间"></el-date-picker>
           </div>
           <div class="exe-pre-panel">
-            <Tooltip content="执行预览解析不含年参数" class="p-left">
+            <el-tooltip content="执行预览解析不含年参数" class="p-left">
               <label>执行预览</label>
-            </Tooltip>
-            <Input type="textarea" :value="preTimeList" class="p-right" :rows="4" readonly />
+            </el-tooltip>
+            <el-input type="textarea" :value="preTimeList" class="p-right" :rows="4" readonly />
           </div>
         </div>
       </div>
     </div>
-  </Card>
+  </el-card>
 </template>
 
 <script>
@@ -128,21 +128,21 @@ export default {
     }
   },
   watch: {
-    cronValue (newVal, oldVal) {
+    cronValue (newVal) {
       if (newVal === this.cronValue_c) {
         // console.info('same cron value: ' + newVal)
         return
       }
       this.formatValue()
     },
-    cronValue_c (newVal, oldVal) {
+    cronValue_c (newVal) {
       this.calTriggerList()
       this.$emit('change', newVal)
     },
-    exeStartTime (newVal, oldVal) {
+    exeStartTime () {
       this.calStartTime()
     },
-    startTime (newVal, oldVal) {
+    startTime () {
       this.calTriggerList()
     }
   },
@@ -237,7 +237,7 @@ export default {
 .right {
   flex-basis: 40%;
   width: 40%;
-  // border: 1px solid dimgray;
+  border: 1px solid dimgray;
 }
 
 .ivu-table-small td {

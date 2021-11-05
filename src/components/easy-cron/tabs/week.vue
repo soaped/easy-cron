@@ -1,37 +1,37 @@
 <template>
   <div class="config-list">
-    <RadioGroup v-model="type">
+    <el-radio-group v-model="type">
     <div class="item">
-      <Radio label="TYPE_NOT_SET" class="choice" :disabled="disableChoice">不设置</Radio>
+      <el-radio label="TYPE_NOT_SET" class="choice" :disabled="disableChoice">不设置</el-radio>
       <span class="tip-info">日和周只能设置其中之一</span>
     </div>
     <div class="item">
-      <Radio label="TYPE_RANGE" class="choice" :disabled="disableChoice">区间</Radio>
-       从<Select v-model="valueRange.start"  class="w80" :disabled="type!=TYPE_RANGE || disableChoice">
-        <Option v-for="(v, k) of WEEK_MAP" :value="v" :key="`week-pre-Lf13-${v}`">{{ k }}</Option>
-      </Select>
-       至<Select v-model="valueRange.end"  class="w80" :disabled="type!=TYPE_RANGE || disableChoice">
-        <Option v-for="(v, k) of WEEK_MAP" :value="v" :key="`week-next-1fas-${v}`">{{ k }}</Option>
-      </Select>
+      <el-radio label="TYPE_RANGE" class="choice" :disabled="disableChoice">区间</el-radio>
+       从<el-select v-model="valueRange.start"  class="w80" :disabled="type!=TYPE_RANGE || disableChoice">
+        <el-option v-for="(v, k) of WEEK_MAP" :value="v" :key="`week-pre-Lf13-${v}`">{{ k }}</el-option>
+      </el-select>
+       至<el-select v-model="valueRange.end"  class="w80" :disabled="type!=TYPE_RANGE || disableChoice">
+        <el-option v-for="(v, k) of WEEK_MAP" :value="v" :key="`week-next-1fas-${v}`">{{ k }}</el-option>
+      </el-select>
     </div>
     <div class="item">
-      <Radio label="TYPE_LOOP" class="choice" :disabled="disableChoice">循环</Radio>
-      从<Select v-model="valueLoop.start"  class="w80" :disabled="type!=TYPE_LOOP || disableChoice">
-        <Option v-for="(v, k) of WEEK_MAP" :value="v" :key="`week-pre-Lf13-${v}`">{{ k }}</Option>
-      </Select>开始，间隔
-      <InputNumber :disabled="type!=TYPE_LOOP || disableChoice" :max="maxValue" :min="minValue" :precision="0"
+      <el-radio label="TYPE_LOOP" class="choice" :disabled="disableChoice">循环</el-radio>
+      从<el-select v-model="valueLoop.start"  class="w80" :disabled="type!=TYPE_LOOP || disableChoice">
+        <el-option v-for="(v, k) of WEEK_MAP" :value="v" :key="`week-pre-Lf13-${v}`">{{ k }}</el-option>
+      </el-select>开始，间隔
+      <el-input-number :disabled="type!=TYPE_LOOP || disableChoice" :max="maxValue" :min="minValue" :precision="0"
        class="w60" v-model="valueLoop.interval" /> 天
     </div>
     <div class="item">
-      <Radio  label="TYPE_SPECIFY" class="choice" :disabled="disableChoice">指定</Radio>
+      <el-radio  label="TYPE_SPECIFY" class="choice" :disabled="disableChoice">指定</el-radio>
       <div class="list">
-        <CheckboxGroup v-model="valueList">
-          <Checkbox class="list-check-item" v-for="(v, k) of WEEK_MAP"
-            :label="v" :key="`key-01jfs-${v}`" :disabled="type!=TYPE_SPECIFY || disableChoice"><span>{{k}}</span></Checkbox>
-        </CheckboxGroup>
+        <el-checkbox-group v-model="valueList">
+          <el-checkbox class="list-check-item" v-for="(v, k) of WEEK_MAP"
+            :label="`${v}`" :key="`key-${v}`" :disabled="type!=TYPE_SPECIFY || disableChoice"><span>{{k}}</span></el-checkbox>
+        </el-checkbox-group>
       </div>
     </div>
-    </RadioGroup>
+    </el-radio-group>
   </div>
 </template>
 
@@ -70,11 +70,11 @@ export default {
     }
   },
   watch: {
-    value_c (newVal, oldVal) {
+    value_c () {
       // 如果设置日，那么星期就直接不设置
       this.updateValue()
     },
-    day (newVal) {
+    day () {
       // console.info('new day: ' + newVal)
       this.updateValue()
     }

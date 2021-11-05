@@ -58,7 +58,7 @@ export default {
     }
   },
   watch: {
-    prop (newVal, oldVal) {
+    prop (newVal) {
       if (newVal === this.value_c) {
         // console.info('skip ' + newVal)
         return
