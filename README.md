@@ -31,7 +31,7 @@
 
 <p>依赖组件列表：</p>
 
-* [iview-3.3.3](https://www.iviewui.com)
+* [element-ui](https://element.eleme.cn/#/zh-CN)
 * [vue.js-2.5.2](https://cn.vuejs.org/)
 * [cron-parser-2.10.0](https://www.npmjs.com/package/cron-parser)
 * [debounce-1.2.0](https://www.npmjs.com/package/debounce)
