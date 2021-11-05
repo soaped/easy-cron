@@ -3,7 +3,7 @@
 #### 1. 介绍
 <p>Cron表达式看则简单，但是实际上如果手写的话，非常容易出错的，而且很难及时发现，而easy-cron就是为此应运而生的。</p>
 
-<p>easy-cron是基于Vue.js和iview实现crontab表达式的UI组件，支持多种特性，可以方便、快捷直观地定义cron表达式，并支持给定开始时间后的执行时间点，方便排除错误。</p>
+<p>本分支 easy-cron是基于Vue.js和 element-ui 实现crontab表达式的UI组件，支持多种特性，可以方便、快捷直观地定义cron表达式，并支持给定开始时间后的执行时间点，方便排除错误。</p>
 本工程包括测试代码，和vue原始文件。
 
 * [gitee: https://gitee.com/toktok/easy-cron](https://gitee.com/toktok/easy-cron)
